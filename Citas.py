@@ -1,75 +1,75 @@
 class Cita:
     def __init__(self, fecha, nombre, dni, medico, horario, correo, telefono, examen):
-        self._fecha = fecha
-        self._nombre = nombre
-        self._dni = dni
-        self._medico = medico
-        self._horario = horario
-        self._correo = correo
-        self._telefono = telefono
-        self._examen = examen
+        self.__fecha = fecha
+        self.__nombre = nombre
+        self.__dni = dni
+        self.__medico = medico
+        self.__horario = horario
+        self.__correo = correo
+        self.__telefono = telefono
+        self.__examen = examen
 
     @property
     def fecha(self):
-        return self._fecha
+        return self.__fecha
 
     @fecha.setter
     def fecha(self, valor):
-        self._fecha = valor
+        self.__fecha = valor
 
     @property
     def nombre(self):
-        return self._nombre
+        return self.__nombre
 
     @nombre.setter
     def nombre(self, valor):
-        self._nombre = valor
+        self.__nombre = valor
 
     @property
     def dni(self):
-        return self._dni
+        return self.__dni
 
     @dni.setter
     def dni(self, valor):
-        self._dni = valor
+        self.__dni = valor
 
     @property
     def medico(self):
-        return self._medico
+        return self.__medico
 
     @medico.setter
     def medico(self, valor):
-        self._medico = valor
+        self.__medico = valor
 
     @property
     def horario(self):
-        return self._horario
+        return self.__horario
 
     @horario.setter
     def horario(self, valor):
-        self._horario = valor
+        self.__horario = valor
 
 
     @property
     def correo(self):
-        return self._correo
+        return self.__correo
 
     @correo.setter
     def correo(self, valor):
-        self._correo = valor
+        self.__correo = valor
 
     @property
     def telefono(self):
-        return self._telefono
+        return self.__telefono
 
     @telefono.setter
     def telefono(self, valor):
-        self._telefono = valor
+        self.__telefono = valor
 
     @property
     def examen(self):
-        return self._examen
+        return self.__examen
 
     @examen.setter
     def examen(self, valor):
-        self._examen = valor
+        self.__examen = valor
