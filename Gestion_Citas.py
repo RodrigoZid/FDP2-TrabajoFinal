@@ -1,9 +1,27 @@
+import re
 from Citas import Cita
+
+ 
+# Función para validar el DNI (solo números y 8 dígitos)
+def validar_dni(dni):
+    if not dni.isdigit() or len(dni) != 8:
+        raise ValueError("El DNI debe ser un número de 8 dígitos.")
+    return dni
 
 def registrar_cita(lista_citas, horarios, medicos, horarios_disponibles, tipos_examen):
     fecha = input("\nIngrese la fecha deseada para la cita (formato dd/mm/aaaa): ")
     nombre = input("Ingrese el nombre del paciente: ")
-    dni = input("Ingrese el DNI del paciente: ")
+    
+    # Validación del DNI
+    while True:
+        dni = input("Ingrese el DNI del paciente: ")
+        try:
+            dni = validar_dni(dni)
+            break
+        except ValueError as e:
+            print(e)
+
+ 
     correo = input("Ingrese el correo electrónico del paciente: ")
     telefono = input("Ingrese el número de teléfono del paciente: ")
 
@@ -20,7 +38,6 @@ def registrar_cita(lista_citas, horarios, medicos, horarios_disponibles, tipos_e
                 print("Opción inválida.")
         except ValueError:
             print("Entrada inválida. Intente nuevamente.")
-
 
     while True:
         print("\nElija un horario disponible:\n")
@@ -106,10 +123,24 @@ def modificar_cita(lista_citas, horarios, medicos, disponibles, tipos_examen):
             cita.nombre = input("Nuevo nombre: ")
 
         if input("¿Desea cambiar el DNI? (s/n): ").lower() == 's':
-            cita.dni = input("Nuevo DNI: ")
+            while True:
+                dni = input("Nuevo DNI: ")
+                try:
+                    dni = validar_dni(dni)
+                    cita.dni = dni
+                    break
+                except ValueError as e:
+                    print(e)
 
         if input("¿Desea cambiar el correo electrónico? (s/n): ").lower() == 's':
-            cita.correo = input("Nuevo correo: ")
+            while True:
+                correo = input("Nuevo correo: ")
+                try:
+                    correo = validar_correo(correo)
+                    cita.correo = correo
+                    break
+                except ValueError as e:
+                    print(e)
 
         if input("¿Desea cambiar el número de teléfono? (s/n): ").lower() == 's':
             cita.telefono = input("Nuevo número: ")
@@ -157,9 +188,10 @@ def eliminar_cita(lista_citas, horarios, disponibles):
             if h == cita.horario:
                 disponibles[i] = True
         print("Cita eliminada.")
-    except ValueError:
+    except ValueError :
         print("Entrada inválida.")
 
+        
 def main():
     horarios = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"]
     medicos = ["Carlos Pérez", "Lucía Gómez", "Mario Rivas", "Ana Salazar",
