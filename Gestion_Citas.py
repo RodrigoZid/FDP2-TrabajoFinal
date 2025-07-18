@@ -1,6 +1,12 @@
 import re
 from Citas import Cita
 
+# Función para validar el correo electrónico
+def validar_correo(correo):
+    patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if not re.match(patron, correo):
+        raise ValueError("Correo electrónico inválido.")
+    return correo
  
 # Función para validar el DNI (solo números y 8 dígitos)
 def validar_dni(dni):
@@ -22,7 +28,15 @@ def registrar_cita(lista_citas, horarios, medicos, horarios_disponibles, tipos_e
             print(e)
 
  
-    correo = input("Ingrese el correo electrónico del paciente: ")
+    # Validación del correo electrónico
+    while True:
+        correo = input("Ingrese el correo electrónico del paciente: ")
+        try:
+            correo = validar_correo(correo)
+            break
+        except ValueError as e:
+            print(e)
+            
     telefono = input("Ingrese el número de teléfono del paciente: ")
 
     print("\nSeleccione el tipo de examen a realizar:")
