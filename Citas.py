@@ -1,75 +1,27 @@
 class Cita:
-    def __init__(self, fecha, nombre, dni, medico, horario, correo, telefono, examen):
+    def __init__(self, fecha, nombre, dni, correo, telefono, examen, horario, medico):
         self.__fecha = fecha
         self.__nombre = nombre
         self.__dni = dni
-        self.__medico = medico
-        self.__horario = horario
         self.__correo = correo
         self.__telefono = telefono
         self.__examen = examen
+        self.__horario = horario
+        self.__medico = medico
 
-    @property
-    def fecha(self):
-        return self.__fecha
+    def mostrar(self):
+        print(f"Fecha: {self.__fecha}")
+        print(f"Nombre: {self.__nombre}")
+        print(f"DNI: {self.__dni}")
+        print(f"Correo: {self.__correo}")
+        print(f"Teléfono: {self.__telefono}")
+        print(f"Tipo de examen: {self.__examen}")
+        print(f"Horario: {self.__horario}")
+        print(f"Médico: Dr. {self.__medico}")
 
-    @fecha.setter
-    def fecha(self, valor):
-        self.__fecha = valor
+    def get_atributo(self, campo):
+        return getattr(self, f"_Cita__{campo}", "")
 
-    @property
-    def nombre(self):
-        return self.__nombre
-
-    @nombre.setter
-    def nombre(self, valor):
-        self.__nombre = valor
-
-    @property
-    def dni(self):
-        return self.__dni
-
-    @dni.setter
-    def dni(self, valor):
-        self.__dni = valor
-
-    @property
-    def medico(self):
-        return self.__medico
-
-    @medico.setter
-    def medico(self, valor):
-        self.__medico = valor
-
-    @property
-    def horario(self):
-        return self.__horario
-
-    @horario.setter
-    def horario(self, valor):
-        self.__horario = valor
-
-
-    @property
-    def correo(self):
-        return self.__correo
-
-    @correo.setter
-    def correo(self, valor):
-        self.__correo = valor
-
-    @property
-    def telefono(self):
-        return self.__telefono
-
-    @telefono.setter
-    def telefono(self, valor):
-        self.__telefono = valor
-
-    @property
-    def examen(self):
-        return self.__examen
-
-    @examen.setter
-    def examen(self, valor):
-        self.__examen = valor
+    def set_atributo(self, campo, valor):
+        if hasattr(self, f"_Cita__{campo}"):
+            setattr(self, f"_Cita__{campo}", valor)
